@@ -133,17 +133,6 @@ body {
 }
 
 /* PROFILE SECTION */
-/* PROFILE SECTION */
-#profile {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 4rem;
-  min-height: 80vh;
-  padding: 60px 50px;            /* respiro lateral e vertical */
-  text-align: left;
-}
-
 .section__pic-container {
   display: flex;
   height: 400px;
@@ -195,41 +184,7 @@ body {
   margin: 0.75rem 0 1.5rem;
 }
 
-/* BOTÕES e ÍCONES */
-.btn-container {
-  display: flex;
-  justify-content: flex-start;   /* botões alinhados à esquerda */
-  gap: 1rem;
-}
-
-.btn {
-  font-weight: 600;
-  transition: all 300ms ease;
-  padding: 0.65rem 1.1rem;
-  width: auto;                   /* deixa o botão do tamanho do texto */
-  border-radius: 6px;
-}
-
-#socials-container {
-  display: flex;
-  justify-content: flex-start;
-  margin-top: 1rem;
-  gap: 1rem;
-}
-
-.icon { height: 2rem; }
-
-
-
-/* ICONS */
-
-.icon {
-  cursor: pointer;
-  height: 2rem;
-}
-
-/* BUTTONS */
-
+/* BOTÕES e ÍCONES (versões mais recentes mantidas) */
 .btn-container {
   display: flex;
   justify-content: center;
@@ -242,6 +197,18 @@ body {
   padding: 0.5rem 1rem;
   width: 8rem;
   border-radius: 6px;
+}
+
+#socials-container {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 1rem;
+  gap: 1rem;
+}
+
+.icon {
+  cursor: pointer;
+  height: 2rem;
 }
 
 .btn-color-1,
@@ -271,3 +238,76 @@ body {
 .btn-color-2:hover {
   border: rgb(255, 255, 255) 0.1rem solid;
 }
+
+#About {
+  display: flex;
+  align-items: center;       /* centraliza verticalmente as duas colunas */
+  gap: 3rem;
+  padding: 60px 50px;
+}
+
+/* coluna esquerda (mantém o layout mais recente) */
+#profile {
+  flex: 1 1 60%;
+  min-width: 0;                  /* evita overflow do texto */
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  min-height: 80vh;
+  padding: 0;                    /* já temos padding no #About */
+}
+
+/* divisor vertical */
+.section-divider {
+  width: 2px;              /* espessura */
+  height: 200px;           /* controla o comprimento fixo */
+  background: #1f1f1f;
+  opacity: 0.85;
+  align-self: center;       /* centraliza verticalmente */
+  margin: 0 20px;           /* espaço horizontal entre as colunas */
+}
+
+.summary {
+  text-align: justify;
+}
+
+
+/* coluna direita (Educação) */
+.education {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;  /* centraliza verticalmente apenas o conteúdo da educação */
+  flex: 1 1 40%;
+  max-width: 560px;
+}
+.education h2 {
+  margin-bottom: 1rem;
+}
+
+.edu-item + .edu-item {          /* espaço entre itens de educação */
+  margin-top: 1rem;
+}
+
+/* ===== Responsivo: empilha no mobile e transforma divisor em horizontal ===== */
+@media (max-width: 900px) {
+  #About {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 40px 24px;
+  }
+
+  #profile {
+    min-height: auto;
+    gap: 2rem;
+  }
+
+  .section-divider {
+    width: 100%;
+    height: 2px;                 /* fica horizontal ao empilhar */
+  }
+
+  .education {
+    max-width: 100%;
+  }
+}
+
