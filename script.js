@@ -118,43 +118,115 @@
 		},
 	};
 
+	const skillsTexts = {
+		en: {
+			levels: {
+				advanced: "Advanced",
+				intermediate: "Intermediate",
+				basic: "Basic",
+			},
+			cards: [
+				// Card 1: Languages
+				["C/C++", "Python", "SQL", "Java", "JavaScript", "ABAP", "C#"],
+				// Card 2: AI/ML
+				[
+					"Machine Learning",
+					"Deep Learning",
+					"Heuristics",
+					"Computer Vision",
+					"Data Analysis",
+					"LLMs",
+				],
+				// Card 3: Frameworks & Libraries
+				[
+					"NumPy",
+					"Pandas",
+					"Scikit-learn",
+					"TensorFlow",
+					"PyTorch",
+					"Android SDK",
+					"React",
+					"AWS",
+				],
+			],
+		},
+		pt: {
+			levels: {
+				advanced: "Avançado",
+				intermediate: "Intermediário",
+				basic: "Básico",
+			},
+			cards: [
+				// Card 1: Linguagens
+				["C/C++", "Python", "SQL", "Java", "JavaScript", "ABAP", "C#"],
+				// Card 2: IA/ML
+				[
+					"Machine Learning",
+					"Deep Learning",
+					"Heurísticas",
+					"Visão Computacional",
+					"Análise de Dados",
+					"LLMs",
+				],
+				// Card 3: Frameworks & Bibliotecas
+				[
+					"NumPy",
+					"Pandas",
+					"Scikit-learn",
+					"TensorFlow",
+					"PyTorch",
+					"Android SDK",
+					"React",
+					"AWS",
+				],
+			],
+		},
+	};
+
 	const projectsTexts = {
 		en: {
 			items: [
 				{
 					title: "Bridge Degradation Forecasting with AI",
-					tags: ["Python", "PyTorch", "Artificial Intelligence", "Data Science", "GRU"],
-					desc:
-						"In my senior thesis with DNIT, I built an AI solution to forecast the degradation of bridges and overpasses. I tested MLP, TabNet, and GRU-based RNNs, with GRUs achieving the best results.",
-					actions: ["View code"] // 1 botão
+					tags: [
+						"Python",
+						"PyTorch",
+						"Artificial Intelligence",
+						"Data Science",
+						"GRU",
+					],
+					desc: "In my senior thesis with DNIT, I built an AI solution to forecast the degradation of bridges and overpasses. I tested MLP, TabNet, and GRU-based RNNs, with GRUs achieving the best results.",
+					actions: ["View code"], // 1 botão
 				},
 				{
 					title: "Computer Vision for Sign Languages",
 					tags: ["Computer Vision", "PyTorch", "Fine-tuning", "Python"],
-					desc:
-						"I developed a real-time computer-vision model that translates LIBRAS symbols into Portuguese, using fine-tuning and pretrained models from Hugging Face to optimize accuracy and speed.",
-					actions: ["View code", "View demo"] // 2 botões
+					desc: "I developed a real-time computer-vision model that translates LIBRAS symbols into Portuguese, using fine-tuning and pretrained models from Hugging Face to optimize accuracy and speed.",
+					actions: ["View code", "View demo"], // 2 botões
 				},
 				{
 					title: "Android CRM App: Efficiency for Education Institutions",
 					tags: ["Mobile", "Android", "Java", "SQL"],
-					desc:
-						"Android app (with Rubeus) to address CRM challenges in education: track opportunities, manage activities, and view performance metrics with a practical workflow.",
-					actions: ["View code", "View demo"]
+					desc: "Android app (with Rubeus) to address CRM challenges in education: track opportunities, manage activities, and view performance metrics with a practical workflow.",
+					actions: ["View code", "View demo"],
 				},
 				{
 					title: "Trem Expresso: Coffee E-commerce",
 					tags: ["Web", "React", "Bootstrap 5", "Node.js", "Express", "SQLite"],
-					desc:
-						"Course project for Web Development: a simple, functional coffee store with product browsing, details, and a cart simulating a basic e-commerce flow.",
-					actions: ["View code"]
+					desc: "Course project for Web Development: a simple, functional coffee store with product browsing, details, and a cart simulating a basic e-commerce flow.",
+					actions: ["View code"],
 				},
 				{
 					title: "An AI that Plays Mortal Kombat II – Genesis",
-					tags: ["Computer Vision", "TensorFlow", "Reinforcement Learning", "CNN", "Python"],
-					desc:
-						"I built an AI agent that plays Mortal Kombat II on the Sega Genesis via computer vision and reinforcement learning. It learns only from frames and sends commands to the emulator.",
-					actions: ["View code", "View demo"]
+					tags: [
+						"Computer Vision",
+						"TensorFlow",
+						"Reinforcement Learning",
+						"CNN",
+						"Python",
+					],
+					desc: "I built an AI agent that plays Mortal Kombat II on the Sega Genesis via computer vision and reinforcement learning. It learns only from frames and sends commands to the emulator.",
+					actions: ["View code", "View demo"],
 				},
 			],
 		},
@@ -162,38 +234,46 @@
 			items: [
 				{
 					title: "Previsão de Degradação em Pontes com IA",
-					tags: ["Python", "PyTorch", "Inteligência Artificial", "Ciência de Dados", "GRU"],
-					desc:
-						"Em meu TCC com o DNIT, desenvolvi uma solução de IA para prever a degradação de pontes e viadutos. Testei MLP, TabNet e RNNs com GRU, sendo GRU a que obteve melhor desempenho.",
-					actions: ["Ver código"]
+					tags: [
+						"Python",
+						"PyTorch",
+						"Inteligência Artificial",
+						"Ciência de Dados",
+						"GRU",
+					],
+					desc: "Em meu TCC com o DNIT, desenvolvi uma solução de IA para prever a degradação de pontes e viadutos. Testei MLP, TabNet e RNNs com GRU, sendo GRU a que obteve melhor desempenho.",
+					actions: ["Ver código"],
 				},
 				{
 					title: "Visão Computacional aplicada a Linguagens de Sinais",
 					tags: ["Visão Computacional", "PyTorch", "Fine-tuning", "Python"],
-					desc:
-						"Rede de visão computacional que traduz, em tempo real, símbolos da LIBRAS para o português, usando fine-tuning e modelos pré-treinados da Hugging Face para precisão e velocidade.",
-					actions: ["Ver código", "Ver demo"]
+					desc: "Rede de visão computacional que traduz, em tempo real, símbolos da LIBRAS para o português, usando fine-tuning e modelos pré-treinados da Hugging Face para precisão e velocidade.",
+					actions: ["Ver código", "Ver demo"],
 				},
 				{
-					title: "App de CRM para Android: Eficiência para Instituições de Ensino",
+					title:
+						"App de CRM para Android: Eficiência para Instituições de Ensino",
 					tags: ["Mobile", "Android", "Java", "SQL"],
-					desc:
-						"Aplicativo Android (com a Rubeus) para desafios de CRM em educação: monitoramento de oportunidades, gestão de atividades e métricas de desempenho em um fluxo prático.",
-					actions: ["Ver código", "Ver demo"]
+					desc: "Aplicativo Android (com a Rubeus) para desafios de CRM em educação: monitoramento de oportunidades, gestão de atividades e métricas de desempenho em um fluxo prático.",
+					actions: ["Ver código", "Ver demo"],
 				},
 				{
 					title: "Trem Expresso: Plataforma de E-commerce para Café",
 					tags: ["Web", "React", "Bootstrap 5", "Node.js", "Express", "SQLite"],
-					desc:
-						"Projeto da disciplina de Desenvolvimento Web: loja de café com navegação de produtos, detalhes e carrinho simulando o fluxo básico de e-commerce.",
-					actions: ["Ver código"]
+					desc: "Projeto da disciplina de Desenvolvimento Web: loja de café com navegação de produtos, detalhes e carrinho simulando o fluxo básico de e-commerce.",
+					actions: ["Ver código"],
 				},
 				{
 					title: "Uma IA que joga Mortal Kombat II – Genesis",
-					tags: ["Visão Computacional", "TensorFlow", "Aprendizado por Reforço", "CNN", "Python"],
-					desc:
-						"Agente de IA que joga Mortal Kombat II no Sega Genesis usando visão computacional e reforço. Aprende só pelos frames e envia comandos ao emulador.",
-					actions: ["Ver código", "Ver demo"]
+					tags: [
+						"Visão Computacional",
+						"TensorFlow",
+						"Aprendizado por Reforço",
+						"CNN",
+						"Python",
+					],
+					desc: "Agente de IA que joga Mortal Kombat II no Sega Genesis usando visão computacional e reforço. Aprende só pelos frames e envia comandos ao emulador.",
+					actions: ["Ver código", "Ver demo"],
 				},
 			],
 		},
@@ -306,6 +386,44 @@
 		});
 	}
 
+	function applyLangToSkills(lang) {
+		const data = skillsTexts[lang] || skillsTexts.en;
+
+		// Título da seção (já tem data-attrs no H2)
+		const skillsSection =
+			document.getElementById("Skills") ||
+			document.querySelector("section#Skills");
+		const skillsTitle = skillsSection?.querySelector(".section-title");
+		if (skillsTitle) {
+			const t = skillsTitle.dataset?.[lang];
+			if (t) skillsTitle.textContent = t;
+		}
+
+		// Títulos dos cards
+		const cards = skillsSection?.querySelectorAll(".skill-card");
+		cards?.forEach((card, idx) => {
+			const h3 = card.querySelector(".skill-card__title");
+			if (h3?.dataset?.[lang]) h3.textContent = h3.dataset[lang];
+
+			// Rótulos das tags
+			const desiredLabels = data.cards[idx] || [];
+			const tagEls = card.querySelectorAll(".tag");
+			tagEls.forEach((tagEl, i) => {
+				const labelEl = tagEl.querySelector(".label");
+				if (labelEl && desiredLabels[i]) {
+					labelEl.textContent = desiredLabels[i];
+				}
+				const levelEl = tagEl.querySelector(".level");
+				if (levelEl) {
+					const key = levelEl.dataset.key; // advanced|intermediate|basic
+					if (key && data.levels[key]) {
+						levelEl.textContent = data.levels[key];
+					}
+				}
+			});
+		});
+	}
+
 	// ===== aplicar idioma na seção Projetos =====
 	function applyLangToProjects(lang) {
 		// Título via data-attrs do próprio H2
@@ -372,8 +490,8 @@
 		applyLangToEducation(lang);
 		applyLangToExperience(lang);
 		applyLangToProjects(lang);
+		applyLangToSkills(lang);
 		updateFlag(lang);
-
 	}
 
 	function setSwitch(lang) {
@@ -387,7 +505,6 @@
 				: "Language switch: English"
 		);
 		updateFlag(lang);
-
 	}
 
 	function toggleLang() {
@@ -420,108 +537,115 @@
 	}
 })();
 
-
 (function () {
-  const wrapper = document.querySelector(".projects-wrapper");
-  const carousel = wrapper?.querySelector(".projects-carousel");
-  const btnLeft = wrapper?.querySelector(".scroll-btn.left");
-  const btnRight = wrapper?.querySelector(".scroll-btn.right");
+	const wrapper = document.querySelector(".projects-wrapper");
+	const carousel = wrapper?.querySelector(".projects-carousel");
+	const btnLeft = wrapper?.querySelector(".scroll-btn.left");
+	const btnRight = wrapper?.querySelector(".scroll-btn.right");
 
-  if (!wrapper || !carousel || !btnLeft || !btnRight) return;
+	if (!wrapper || !carousel || !btnLeft || !btnRight) return;
 
-  // Acessibilidade e comportamento básico
-  carousel.setAttribute("role", "region");
-  carousel.setAttribute("aria-label", "Carrossel de projetos");
-  carousel.style.scrollBehavior = "smooth";
+	// Acessibilidade e comportamento básico
+	carousel.setAttribute("role", "region");
+	carousel.setAttribute("aria-label", "Carrossel de projetos");
+	carousel.style.scrollBehavior = "smooth";
 
-  // “Página” de rolagem por clique de seta
-  const page = () => Math.max(wrapper.clientWidth * 0.9, 300);
+	// “Página” de rolagem por clique de seta
+	const page = () => Math.max(wrapper.clientWidth * 0.9, 300);
 
-  const atStart = () => Math.floor(carousel.scrollLeft) <= 0;
-  const atEnd = () =>
-    Math.ceil(carousel.scrollLeft + carousel.clientWidth) >=
-    Math.ceil(carousel.scrollWidth - 1);
+	const atStart = () => Math.floor(carousel.scrollLeft) <= 0;
+	const atEnd = () =>
+		Math.ceil(carousel.scrollLeft + carousel.clientWidth) >=
+		Math.ceil(carousel.scrollWidth - 1);
 
-  const updateButtons = () => {
-    btnLeft.disabled = atStart();
-    btnRight.disabled = atEnd();
-    btnLeft.setAttribute("aria-disabled", String(btnLeft.disabled));
-    btnRight.setAttribute("aria-disabled", String(btnRight.disabled));
-  };
+	const updateButtons = () => {
+		btnLeft.disabled = atStart();
+		btnRight.disabled = atEnd();
+		btnLeft.setAttribute("aria-disabled", String(btnLeft.disabled));
+		btnRight.setAttribute("aria-disabled", String(btnRight.disabled));
+	};
 
-  const scrollByAmount = (amount) => {
-    carousel.scrollBy({ left: amount, behavior: "smooth" });
-  };
+	const scrollByAmount = (amount) => {
+		carousel.scrollBy({ left: amount, behavior: "smooth" });
+	};
 
-  // Botões
-  btnLeft.addEventListener("click", () => scrollByAmount(-page()));
-  btnRight.addEventListener("click", () => scrollByAmount(page()));
+	// Botões
+	btnLeft.addEventListener("click", () => scrollByAmount(-page()));
+	btnRight.addEventListener("click", () => scrollByAmount(page()));
 
-  // Atualiza estado enquanto rola
-  const onScroll = () => updateButtons();
-  carousel.addEventListener("scroll", onScroll, { passive: true });
+	// Atualiza estado enquanto rola
+	const onScroll = () => updateButtons();
+	//carousel.addEventListener("scroll", onScroll, { passive: true });
 
-  // Teclado dentro do carrossel
-  carousel.addEventListener("keydown", (e) => {
-    if (e.key === "ArrowLeft") {
-      e.preventDefault();
-      scrollByAmount(-page());
-    } else if (e.key === "ArrowRight") {
-      e.preventDefault();
-      scrollByAmount(page());
-    }
-  });
+	// Teclado dentro do carrossel
+	carousel.addEventListener("keydown", (e) => {
+		if (e.key === "ArrowLeft") {
+			e.preventDefault();
+			scrollByAmount(-page());
+		} else if (e.key === "ArrowRight") {
+			e.preventDefault();
+			scrollByAmount(page());
+		}
+	});
 
-  // Roda do mouse transformada em rolagem horizontal
-  carousel.addEventListener(
-    "wheel",
-    (e) => {
-      if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-        carousel.scrollLeft += e.deltaY;
-        e.preventDefault();
-      }
-    },
-    { passive: false }
-  );
+	// Roda do mouse transformada em rolagem horizontal
+	// carousel.addEventListener(
+	// 	"wheel",
+	// 	(e) => {
+	// 		if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+	// 			carousel.scrollLeft += e.deltaY;
+	// 			e.preventDefault();
+	// 		}
+	// 	},
+	// 	{ passive: false }
+	// );
 
-  // Arrastar (mouse/touch)
-  let dragging = false;
-  let startX = 0;
-  let startScroll = 0;
+	// Arrastar (mouse/touch)
+	let dragging = false;
+	let startX = 0;
+	let startScroll = 0;
 
-  const startDrag = (x) => {
-    dragging = true;
-    startX = x;
-    startScroll = carousel.scrollLeft;
-    carousel.classList.add("dragging");
-  };
-  const moveDrag = (x) => {
-    if (!dragging) return;
-    const dx = x - startX;
-    carousel.scrollLeft = startScroll - dx;
-  };
-  const endDrag = () => {
-    dragging = false;
-    carousel.classList.remove("dragging");
-  };
+	const startDrag = (x) => {
+		dragging = true;
+		startX = x;
+		startScroll = carousel.scrollLeft;
+		carousel.classList.add("dragging");
+	};
+	const moveDrag = (x) => {
+		if (!dragging) return;
+		const dx = x - startX;
+		carousel.scrollLeft = startScroll - dx;
+	};
+	const endDrag = () => {
+		dragging = false;
+		carousel.classList.remove("dragging");
+	};
 
-  carousel.addEventListener("mousedown", (e) => startDrag(e.clientX));
-  window.addEventListener("mousemove", (e) => moveDrag(e.clientX));
-  window.addEventListener("mouseup", endDrag);
+	carousel.addEventListener("mousedown", (e) => startDrag(e.clientX));
+	window.addEventListener("mousemove", (e) => moveDrag(e.clientX));
+	window.addEventListener("mouseup", endDrag);
 
-  carousel.addEventListener("touchstart", (e) => startDrag(e.touches[0].clientX), { passive: true });
-  carousel.addEventListener("touchmove", (e) => moveDrag(e.touches[0].clientX), { passive: true });
-  carousel.addEventListener("touchend", endDrag);
-  carousel.addEventListener("touchcancel", endDrag);
+	carousel.addEventListener(
+		"touchstart",
+		(e) => startDrag(e.touches[0].clientX),
+		{ passive: true }
+	);
+	carousel.addEventListener(
+		"touchmove",
+		(e) => moveDrag(e.touches[0].clientX),
+		{ passive: true }
+	);
+	carousel.addEventListener("touchend", endDrag);
+	carousel.addEventListener("touchcancel", endDrag);
 
-  // Evita clique em links enquanto arrasta
-  carousel.querySelectorAll("a").forEach((a) => {
-    a.addEventListener("click", (e) => {
-      if (carousel.classList.contains("dragging")) e.preventDefault();
-    });
-  });
+	// Evita clique em links enquanto arrasta
+	carousel.querySelectorAll("a").forEach((a) => {
+		a.addEventListener("click", (e) => {
+			if (carousel.classList.contains("dragging")) e.preventDefault();
+		});
+	});
 
-  // Estado inicial + resize
-  updateButtons();
-  window.addEventListener("resize", updateButtons);
+	// Estado inicial + resize
+	updateButtons();
+	window.addEventListener("resize", updateButtons);
 })();
