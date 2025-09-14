@@ -118,6 +118,87 @@
 		},
 	};
 
+	const projectsTexts = {
+		en: {
+			items: [
+				{
+					title: "Bridge Degradation Forecasting with AI",
+					tags: ["Python", "PyTorch", "Artificial Intelligence", "Data Science", "GRU"],
+					desc:
+						"In my senior thesis with DNIT, I built an AI solution to forecast the degradation of bridges and overpasses. I tested MLP, TabNet, and GRU-based RNNs, with GRUs achieving the best results.",
+					actions: ["View code"] // 1 botão
+				},
+				{
+					title: "Computer Vision for Sign Languages",
+					tags: ["Computer Vision", "PyTorch", "Fine-tuning", "Python"],
+					desc:
+						"I developed a real-time computer-vision model that translates LIBRAS symbols into Portuguese, using fine-tuning and pretrained models from Hugging Face to optimize accuracy and speed.",
+					actions: ["View code", "View demo"] // 2 botões
+				},
+				{
+					title: "Android CRM App: Efficiency for Education Institutions",
+					tags: ["Mobile", "Android", "Java", "SQL"],
+					desc:
+						"Android app (with Rubeus) to address CRM challenges in education: track opportunities, manage activities, and view performance metrics with a practical workflow.",
+					actions: ["View code", "View demo"]
+				},
+				{
+					title: "Trem Expresso: Coffee E-commerce",
+					tags: ["Web", "React", "Bootstrap 5", "Node.js", "Express", "SQLite"],
+					desc:
+						"Course project for Web Development: a simple, functional coffee store with product browsing, details, and a cart simulating a basic e-commerce flow.",
+					actions: ["View code"]
+				},
+				{
+					title: "An AI that Plays Mortal Kombat II – Genesis",
+					tags: ["Computer Vision", "TensorFlow", "Reinforcement Learning", "CNN", "Python"],
+					desc:
+						"I built an AI agent that plays Mortal Kombat II on the Sega Genesis via computer vision and reinforcement learning. It learns only from frames and sends commands to the emulator.",
+					actions: ["View code", "View demo"]
+				},
+			],
+		},
+		pt: {
+			items: [
+				{
+					title: "Previsão de Degradação em Pontes com IA",
+					tags: ["Python", "PyTorch", "Inteligência Artificial", "Ciência de Dados", "GRU"],
+					desc:
+						"Em meu TCC com o DNIT, desenvolvi uma solução de IA para prever a degradação de pontes e viadutos. Testei MLP, TabNet e RNNs com GRU, sendo GRU a que obteve melhor desempenho.",
+					actions: ["Ver código"]
+				},
+				{
+					title: "Visão Computacional aplicada a Linguagens de Sinais",
+					tags: ["Visão Computacional", "PyTorch", "Fine-tuning", "Python"],
+					desc:
+						"Rede de visão computacional que traduz, em tempo real, símbolos da LIBRAS para o português, usando fine-tuning e modelos pré-treinados da Hugging Face para precisão e velocidade.",
+					actions: ["Ver código", "Ver demo"]
+				},
+				{
+					title: "App de CRM para Android: Eficiência para Instituições de Ensino",
+					tags: ["Mobile", "Android", "Java", "SQL"],
+					desc:
+						"Aplicativo Android (com a Rubeus) para desafios de CRM em educação: monitoramento de oportunidades, gestão de atividades e métricas de desempenho em um fluxo prático.",
+					actions: ["Ver código", "Ver demo"]
+				},
+				{
+					title: "Trem Expresso: Plataforma de E-commerce para Café",
+					tags: ["Web", "React", "Bootstrap 5", "Node.js", "Express", "SQLite"],
+					desc:
+						"Projeto da disciplina de Desenvolvimento Web: loja de café com navegação de produtos, detalhes e carrinho simulando o fluxo básico de e-commerce.",
+					actions: ["Ver código"]
+				},
+				{
+					title: "Uma IA que joga Mortal Kombat II – Genesis",
+					tags: ["Visão Computacional", "TensorFlow", "Aprendizado por Reforço", "CNN", "Python"],
+					desc:
+						"Agente de IA que joga Mortal Kombat II no Sega Genesis usando visão computacional e reforço. Aprende só pelos frames e envia comandos ao emulador.",
+					actions: ["Ver código", "Ver demo"]
+				},
+			],
+		},
+	};
+
 	// ---- Elementos usados -----------------------------------------------------
 	const switchBtn = document.getElementById("langSwitch");
 	const navLinks = document.querySelectorAll(".nav-links li a");
@@ -154,6 +235,11 @@
 	const xpSection = document.getElementById("experience");
 	const xpTitle = xpSection?.querySelector(".section-title");
 	const xpRows = xpSection?.querySelectorAll(".timeline .timeline-row");
+
+	// Seção projetos (root + cards) =====
+	const projectsSection = document.getElementById("projects");
+	const projectsTitle = projectsSection?.querySelector(".section-title");
+	const projectCards = projectsSection?.querySelectorAll(".project-card");
 
 	// ---- Funções auxiliares ---------------------------------------------------
 	function applyLangToNav(lang) {
@@ -220,6 +306,51 @@
 		});
 	}
 
+	// ===== aplicar idioma na seção Projetos =====
+	function applyLangToProjects(lang) {
+		// Título via data-attrs do próprio H2
+		if (projectsTitle) {
+			const txt = projectsTitle.dataset?.[lang];
+			if (txt) projectsTitle.textContent = txt;
+		}
+
+		const data = projectsTexts[lang] || projectsTexts.en;
+		if (!projectCards || !data?.items) return;
+
+		projectCards.forEach((card, idx) => {
+			const item = data.items[idx];
+			if (!item) return;
+
+			// Título
+			const titleEl = card.querySelector(".project-title");
+			if (titleEl && item.title) titleEl.textContent = item.title;
+
+			// Tags
+			const ul = card.querySelector(".tags");
+			if (ul && Array.isArray(item.tags)) {
+				ul.innerHTML = "";
+				item.tags.forEach((t) => {
+					const li = document.createElement("li");
+					li.textContent = t;
+					ul.appendChild(li);
+				});
+			}
+
+			// Descrição
+			const descEl = card.querySelector(".project-desc");
+			if (descEl && item.desc) descEl.textContent = item.desc;
+
+			// Botões (pega o 2º <span> de cada link — o de texto)
+			const links = card.querySelectorAll(".card-actions .btn-link");
+			links.forEach((a, i) => {
+				const labelSpan = a.querySelector("span:last-child");
+				if (labelSpan && item.actions?.[i]) {
+					labelSpan.textContent = item.actions[i];
+				}
+			});
+		});
+	}
+
 	function updateFlag(lang) {
 		if (!langFlag) return;
 		if (lang === "pt") {
@@ -240,6 +371,7 @@
 		applyLangToProfile(lang);
 		applyLangToEducation(lang);
 		applyLangToExperience(lang);
+		applyLangToProjects(lang);
 		updateFlag(lang);
 
 	}
@@ -286,4 +418,110 @@
 			}
 		});
 	}
+})();
+
+
+(function () {
+  const wrapper = document.querySelector(".projects-wrapper");
+  const carousel = wrapper?.querySelector(".projects-carousel");
+  const btnLeft = wrapper?.querySelector(".scroll-btn.left");
+  const btnRight = wrapper?.querySelector(".scroll-btn.right");
+
+  if (!wrapper || !carousel || !btnLeft || !btnRight) return;
+
+  // Acessibilidade e comportamento básico
+  carousel.setAttribute("role", "region");
+  carousel.setAttribute("aria-label", "Carrossel de projetos");
+  carousel.style.scrollBehavior = "smooth";
+
+  // “Página” de rolagem por clique de seta
+  const page = () => Math.max(wrapper.clientWidth * 0.9, 300);
+
+  const atStart = () => Math.floor(carousel.scrollLeft) <= 0;
+  const atEnd = () =>
+    Math.ceil(carousel.scrollLeft + carousel.clientWidth) >=
+    Math.ceil(carousel.scrollWidth - 1);
+
+  const updateButtons = () => {
+    btnLeft.disabled = atStart();
+    btnRight.disabled = atEnd();
+    btnLeft.setAttribute("aria-disabled", String(btnLeft.disabled));
+    btnRight.setAttribute("aria-disabled", String(btnRight.disabled));
+  };
+
+  const scrollByAmount = (amount) => {
+    carousel.scrollBy({ left: amount, behavior: "smooth" });
+  };
+
+  // Botões
+  btnLeft.addEventListener("click", () => scrollByAmount(-page()));
+  btnRight.addEventListener("click", () => scrollByAmount(page()));
+
+  // Atualiza estado enquanto rola
+  const onScroll = () => updateButtons();
+  carousel.addEventListener("scroll", onScroll, { passive: true });
+
+  // Teclado dentro do carrossel
+  carousel.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowLeft") {
+      e.preventDefault();
+      scrollByAmount(-page());
+    } else if (e.key === "ArrowRight") {
+      e.preventDefault();
+      scrollByAmount(page());
+    }
+  });
+
+  // Roda do mouse transformada em rolagem horizontal
+  carousel.addEventListener(
+    "wheel",
+    (e) => {
+      if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+        carousel.scrollLeft += e.deltaY;
+        e.preventDefault();
+      }
+    },
+    { passive: false }
+  );
+
+  // Arrastar (mouse/touch)
+  let dragging = false;
+  let startX = 0;
+  let startScroll = 0;
+
+  const startDrag = (x) => {
+    dragging = true;
+    startX = x;
+    startScroll = carousel.scrollLeft;
+    carousel.classList.add("dragging");
+  };
+  const moveDrag = (x) => {
+    if (!dragging) return;
+    const dx = x - startX;
+    carousel.scrollLeft = startScroll - dx;
+  };
+  const endDrag = () => {
+    dragging = false;
+    carousel.classList.remove("dragging");
+  };
+
+  carousel.addEventListener("mousedown", (e) => startDrag(e.clientX));
+  window.addEventListener("mousemove", (e) => moveDrag(e.clientX));
+  window.addEventListener("mouseup", endDrag);
+
+  carousel.addEventListener("touchstart", (e) => startDrag(e.touches[0].clientX), { passive: true });
+  carousel.addEventListener("touchmove", (e) => moveDrag(e.touches[0].clientX), { passive: true });
+  carousel.addEventListener("touchend", endDrag);
+  carousel.addEventListener("touchcancel", endDrag);
+
+  // Evita clique em links enquanto arrasta
+  carousel.querySelectorAll("a").forEach((a) => {
+    a.addEventListener("click", (e) => {
+      if (carousel.classList.contains("dragging")) e.preventDefault();
+    });
+  });
+
+  // Estado inicial + resize
+  updateButtons();
+  window.addEventListener("resize", updateButtons);
 })();
