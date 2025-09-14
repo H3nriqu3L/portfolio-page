@@ -710,3 +710,10 @@ body {
 @media (min-width: 1024px) {
   .skill-card { grid-column: span 4; }
 }
+
+#socials-container .email-text a {
+  text-decoration: none;
+  color: #333; /* ou a cor que você preferir */
+  font-size: 14px;
+  transition: color 0.2s ease;
+}

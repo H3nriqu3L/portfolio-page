@@ -649,3 +649,18 @@
 	updateButtons();
 	window.addEventListener("resize", updateButtons);
 })();
+
+document.addEventListener('DOMContentLoaded', () => {
+  const btn = document.querySelector('.btn.btn-color-1');
+  if (!btn) return;
+
+  btn.addEventListener('click', (e) => {
+    // Se você tiver algum preventDefault global, isto garante que o clique siga:
+    e.stopPropagation();
+
+    const email   = 'hlopes.ccp@gmail.com';
+    const subject = encodeURIComponent('Contato via Site');
+    const body    = encodeURIComponent('Olá, Henrique!');
+    window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+  });
+});
