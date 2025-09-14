@@ -12,7 +12,7 @@
 			<div class="logo">Henrique A. Lopes</div>
 			<div>
 				<ul class="nav-links">
-					<li><a href="#about" data-en="About" data-pt="Sobre">About</a></li>
+					<li><a href="#About" data-en="About" data-pt="Sobre">About</a></li>
 					<li>
 						<a href="#experience" data-en="Experience" data-pt="Experiência"
 							>Experience</a
@@ -34,25 +34,33 @@
 					</li>
 				</ul>
 			</div>
-			<button
-				id="langSwitch"
-				class="lang-switch"
-				type="button"
-				role="switch"
-				aria-label="Toggle language"
-				aria-checked="false"
-				data-lang="en"
-			>
-				<span class="option en">EN</span>
-				<span class="option pt">PT</span>
-				<span class="thumb" aria-hidden="true"></span>
-			</button>
+			<div class="lang-controls" aria-label="Language controls">
+				<img
+					id="langFlag"
+					src="assets/Flag_of_the_United_States.png"
+					alt="Português"
+					class="lang-flag"
+				/>
+				<button
+					id="langSwitch"
+					class="lang-switch"
+					type="button"
+					role="switch"
+					aria-label="Toggle language"
+					aria-checked="true"
+					data-lang="pt"
+				>
+					<span class="option en">EN</span>
+					<span class="option pt">PT</span>
+					<span class="thumb" aria-hidden="true"></span>
+				</button>
+			</div>
 		</nav>
 
 		<section id="About">
 			<section id="profile">
 				<div class="section__pic-container">
-					<img src="./assets/profile-pic-henri.jpg" alt="profile picture" />
+					<img src="./assets/profile-pic-henri2.jpeg" alt="profile picture" />
 				</div>
 				<div class="section__text">
 					<p class="section__text__p1">Olá, eu sou</p>
@@ -165,7 +173,7 @@
 					<article class="xp-card">
 						<header class="xp-head">
 							<h3 class="xp-role">Iniciação Científica (IC)</h3>
-							<p class="xp-meta">Viçosa.MG - UFV </p>
+							<p class="xp-meta">Viçosa.MG - UFV</p>
 						</header>
 						<ul class="xp-points">
 							<li>
@@ -178,6 +186,111 @@
 							</li>
 							<li>Otimizei geração de dados com técnicas heurísticas.</li>
 						</ul>
+					</article>
+				</div>
+			</div>
+		</section>
+
+		<section id="projects" class="section">
+			<h2 class="section-title" data-en="Projects" data-pt="Projetos">
+				Projetos
+			</h2>
+
+			<div class="projects-wrapper">
+				<!-- botões de navegação -->
+				<button
+					class="scroll-btn left"
+					aria-label="Scroll left"
+					title="Anterior"
+				>
+					‹
+				</button>
+				<button
+					class="scroll-btn right"
+					aria-label="Scroll right"
+					title="Próximo"
+				>
+					›
+				</button>
+
+				<!-- carrossel -->
+				<div
+					class="projects-carousel"
+					tabindex="0"
+					aria-label="Projetos (role para os lados)"
+				>
+					<!-- CARD 1 -->
+					<article class="project-card">
+						<h3 class="project-title">
+							IA para predição de Degradação em pontes
+						</h3>
+						<ul class="tags">
+							<li>Python</li>
+							<li>Artificial Inteligence</li>
+							<li>Data Science</li>
+							<li>GRU</li>
+						</ul>
+						<p class="project-desc">
+							Desenvolvi, em parceria com o DNIT, um projeto de conclusão de
+							curso voltado para a criação de uma solução de Inteligência
+							Artificial para previsão da degradação de pontes e viadutos. No
+							projeto, explorei três abordagens diferentes: MLP (Perceptron
+							Multicamadas), uma técnica clássica de redes neurais; TabNet, uma
+							arquitetura mais recente e eficiente para dados tabulares; RNNs
+							com GRU (Gated Recurrent Units), que apresentou os melhores
+							resultados, conseguindo prever com sucesso o nível de degradação
+							das estruturas.
+						</p>
+						<div class="card-actions">
+							<a
+								class="btn-link"
+								href="https://github.com/seu-usuario/seu-repo"
+								target="_blank"
+								rel="noopener"
+							>
+								<span class="icon">🐙</span> <span>View code</span>
+							</a>
+							<a
+								class="btn-link"
+								href="https://seu-dominio/demo-timetable"
+								target="_blank"
+								rel="noopener"
+							>
+								<span class="icon">🚀</span> <span>View demo</span>
+							</a>
+						</div>
+					</article>
+
+					<!-- CARD 2 -->
+					<article class="project-card">
+						<h3 class="project-title">ML Algorithm Comparison Tool</h3>
+						<ul class="tags">
+							<li>Machine Learning</li>
+							<li>EDA</li>
+							<li>Flask</li>
+						</ul>
+						<p class="project-desc">
+							App Flask para análise exploratória e comparação de 10 algoritmos
+							com validação cruzada configurável.
+						</p>
+						<div class="card-actions">
+							<a
+								class="btn-link"
+								href="https://github.com/seu-usuario/outro-repo"
+								target="_blank"
+								rel="noopener"
+							>
+								<span class="icon">🐙</span> <span>View code</span>
+							</a>
+							<a
+								class="btn-link"
+								href="https://seu-dominio/demo-ml"
+								target="_blank"
+								rel="noopener"
+							>
+								<span class="icon">🚀</span> <span>View demo</span>
+							</a>
+						</div>
 					</article>
 				</div>
 			</div>

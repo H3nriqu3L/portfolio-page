@@ -118,14 +118,10 @@
 		},
 	};
 
-	
-
-	
-
 	// ---- Elementos usados -----------------------------------------------------
 	const switchBtn = document.getElementById("langSwitch");
 	const navLinks = document.querySelectorAll(".nav-links li a");
-	
+	const langFlag = document.getElementById("langFlag");
 
 	// Seção profile
 	const profileSection =
@@ -224,6 +220,17 @@
 		});
 	}
 
+	function updateFlag(lang) {
+		if (!langFlag) return;
+		if (lang === "pt") {
+			langFlag.src = "assets/Flag_of_Brazil.png";
+			langFlag.alt = "Português";
+		} else {
+			langFlag.src = "assets/Flag_of_the_United_States.png";
+			langFlag.alt = "English";
+		}
+	}
+
 	function applyLang(lang) {
 		document.documentElement.setAttribute(
 			"lang",
@@ -233,6 +240,8 @@
 		applyLangToProfile(lang);
 		applyLangToEducation(lang);
 		applyLangToExperience(lang);
+		updateFlag(lang);
+
 	}
 
 	function setSwitch(lang) {
@@ -245,6 +254,8 @@
 				? "Alternador de idioma: Português"
 				: "Language switch: English"
 		);
+		updateFlag(lang);
+
 	}
 
 	function toggleLang() {
