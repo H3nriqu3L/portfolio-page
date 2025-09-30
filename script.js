@@ -228,6 +228,12 @@
 					desc: "I built an AI agent that plays Mortal Kombat II on the Sega Genesis via computer vision and reinforcement learning. It learns only from frames and sends commands to the emulator.",
 					actions: ["View code", "View demo"],
 				},
+				{
+					title: "Computer Graphics in C++/OpenGL with Blender Airplane",
+					tags: ["C++", "OpenGL", "Blender", "Engine"],
+					desc: "I built a computer-graphics app in C++ using OpenGL and a 3D airplane model created in Blender. The project covers model import and rendering, 3D transformations, lighting and textures setup, plus camera and perspective control.",
+					actions: ["View code", "View demo"],
+				},
 			],
 		},
 		pt: {
@@ -273,6 +279,13 @@
 						"Python",
 					],
 					desc: "Agente de IA que joga Mortal Kombat II no Sega Genesis usando visão computacional e reforço. Aprende só pelos frames e envia comandos ao emulador.",
+					actions: ["Ver código", "Ver demo"],
+				},
+				{
+					title:
+						"Projeto de Computação Gráfica em C++/OpenGL com Avião do Blender",
+					tags: ["C++", "OpenGL", "Blender", "Engine"],
+					desc: "Desenvolvi uma aplicação de computação gráfica em C++ com OpenGL e um avião 3D criado no Blender. Inclui importação e renderização do modelo, transformações 3D, configuração de iluminação e texturas, além de controle de câmera e perspectiva.",
 					actions: ["Ver código", "Ver demo"],
 				},
 			],
@@ -649,18 +662,3 @@
 	updateButtons();
 	window.addEventListener("resize", updateButtons);
 })();
-
-document.addEventListener('DOMContentLoaded', () => {
-  const btn = document.querySelector('.btn.btn-color-1');
-  if (!btn) return;
-
-  btn.addEventListener('click', (e) => {
-    // Se você tiver algum preventDefault global, isto garante que o clique siga:
-    e.stopPropagation();
-
-    const email   = 'hlopes.ccp@gmail.com';
-    const subject = encodeURIComponent('Contato via Site');
-    const body    = encodeURIComponent('Olá, Henrique!');
-    window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
-  });
-});
