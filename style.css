@@ -158,19 +158,21 @@ body {
 }
 
 /* PROFILE SECTION */
+
 .section__pic-container {
-	display: flex;
-	height: 400px;
-	width: 400px;
-	margin: 0;
-	border-radius: 20px; /* define o raio dos cantos */
-	overflow: hidden; /* impede a imagem de sair do contêiner */
+  /* height: 400px; */
+  /* width: 400px; */
+  width: clamp(240px, 28vw, 420px); 
+  aspect-ratio: 1 / 1;             
+  border-radius: 20px;
+  overflow: hidden;
+  flex: 0 0 auto;                   
 }
 
 .section__pic-container img {
-	width: 100%;
-	height: 100%;
-	object-fit: cover; /* mantém o corte proporcional */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;                 
 }
 
 .section__text {
