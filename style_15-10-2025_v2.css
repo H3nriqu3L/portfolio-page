@@ -906,3 +906,7 @@ body {
   #profile { min-height: auto; }
   .section__text { max-width: 100%; }
 }
+
+.level[data-key="basic"]        { background: #CD7F32; color: #fff; }  /* bronze */
+.level[data-key="intermediate"] { background: #C0C0C0; color: #000; }  /* prata */
+.level[data-key="advanced"]     { background: #D4AF37; color: #000; }  /* ouro  */
