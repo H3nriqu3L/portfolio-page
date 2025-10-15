@@ -726,7 +726,18 @@ body {
   transition: color 0.2s ease;
 }
 
-/* Mobile-only: até ~tablet */
+
+@media (max-width: 768px){
+	 .nav-links li a { font-size: 0.95rem; }
+
+   #nav-bar:has(#langSwitch[data-lang="pt"]) .nav-links li a {
+    font-size: 0.88rem;       /* ajuste fino para PT */
+  }
+  #nav-bar:has(#langSwitch[data-lang="pt"]) .nav-links {
+    gap: 8px 12px;            /* um pouco menos de espaço entre itens */
+  }
+}
+/* Mobile-only */
 @media (max-width: 750px) {
   /*  retira rolagem horizontal */
   html, body { overflow-x: hidden; }
@@ -741,7 +752,7 @@ body {
     flex-wrap: wrap;          /* permite quebrar em 2 linhas */
     gap: 10px 14px;
   }
-  .nav-links li a { font-size: 0.95rem; }
+ 
 
   /*  About mais confortável no mobile */
   #About { padding: 28px 16px; gap: 1.5rem; }
@@ -778,6 +789,70 @@ body {
   #socials-container {
     text-align: center;
     justify-content: center;
+  }
+
+   .projects-carousel {
+    grid-auto-columns: 100%;
+    gap: 0.75rem;                 /* um respiro entre cards */
+    padding: 0.5rem 1rem 1rem;    /* gutters laterais */
+    scroll-padding-inline: 1rem;  /* alinha snap com o gutter */
+    -webkit-overflow-scrolling: touch;
+  }
+  .project-card {
+    scroll-snap-align: start;     /* ou 'center' se preferir centralizado */
+  }
+
+  /* garante que nada “puxe” o carrossel pra fora */
+  .projects-wrapper { overflow: clip; }
+  .scroll-btn.left  { left: 8px; }
+  .scroll-btn.right { right: 8px; }
+
+  /* opcional: evita paradas “meio card” */
+  .projects-carousel { scroll-snap-stop: always; }
+
+  .lang-controls {
+    display: inline-flex;     /* garante comportamento consistente */
+    flex-direction: column;   /* bandeira em cima, toggle embaixo */
+    align-items: flex-end;    /* encosta no canto direito */
+    gap: 6px;
+    margin-left: 0;           /* libera espaço pros links */
+  }
+
+  .lang-flag {
+    height: 20px;             /* um pouco menor no mobile */
+  }
+
+  /* botão mais compacto no mobile */
+  .lang-switch {
+    --pill-h: 30px;
+    --pill-w: 76px;
+    margin-left: 0;           /* remove offset lateral */
+  }
+
+   #nav-bar .logo { 
+    display: none; 
+  }
+
+  /* redistribui o espaço entre links e controles de idioma */
+  #nav-bar {
+    padding: 12px clamp(10px, 4vw, 18px);
+    gap: 8px;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;       /* pode quebrar em 2 linhas se precisar */
+    gap: 10px 14px;
+  }
+  .nav-links li a {
+    font-size: 0.9rem;      /* antes ~1rem → reduz levemente */
+    line-height: 1.2;       /* deixa mais compacto sem colar demais */
+    padding-bottom: 2px;    /* mantém o sublinhado/hover certinho */
+  }
+
+  /* já que tiramos o logo, encosta os controles no canto direito */
+  .lang-controls {
+    margin-left: 0;
+    align-items: flex-end; /* junto com sua regra de empilhar bandeira ↑ */
   }
 }
 
