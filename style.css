@@ -15,6 +15,10 @@ html {
 	scroll-padding-top: var(--nav-h);
 }
 
+html, body {
+  overflow-x: clip; 
+}
+
 body {
 	font-family: "Poppins", sans-serif;
 	background-color: #f9f9f9;
@@ -37,7 +41,7 @@ body {
 	margin-left: 16px;
 }
 
-/* SVG como imagem: remova efeitos de baseline e garanta caixa certinha */
+/* SVG */
 .lang-flag {
 	height: 24px;
 	display: block;
@@ -57,6 +61,7 @@ body {
 	z-index: 100;
 	gap: 12px;
 }
+
 
 .nav-links {
 	list-style: none;
@@ -475,6 +480,7 @@ body {
 .projects-wrapper {
 	position: relative;
 	margin-top: 1rem;
+	/* overflow: clip; */
 }
 
 .projects-carousel {
@@ -718,4 +724,82 @@ body {
   color: #333; /* ou a cor que você preferir */
   font-size: 14px;
   transition: color 0.2s ease;
+}
+
+/* Mobile-only: até ~tablet */
+@media (max-width: 750px) {
+  /*  retira rolagem horizontal */
+  html, body { overflow-x: hidden; }
+
+  /* Navbar mais compacta e menu quebrável */
+  #nav-bar {
+    padding: 14px clamp(12px, 4vw, 22px);
+    gap: 8px;
+  }
+  .logo { font-size: 1.15rem; }
+  .nav-links {
+    flex-wrap: wrap;          /* permite quebrar em 2 linhas */
+    gap: 10px 14px;
+  }
+  .nav-links li a { font-size: 0.95rem; }
+
+  /*  About mais confortável no mobile */
+  #About { padding: 28px 16px; gap: 1.5rem; }
+  #profile { gap: 1.5rem; }
+  .section__pic-container { width: clamp(180px, 58vw, 260px); }
+
+  /* Carrossel: impedir “vazamento” lateral das setas */
+  .projects-wrapper { overflow: clip; } /* corta qualquer sobra sem afetar o scroll interno */
+  .scroll-btn.left  { left: 8px; }      /* em vez de valores negativos */
+  .scroll-btn.right { right: 8px; }
+  .projects-carousel {
+    padding: 0.5rem 1.5rem 1rem;  /* menos padding lateral no mobile */
+    scroll-padding-inline: 1.5rem;
+  }
+
+  /*  Textos longos n estouram */
+  #socials-container .email-text a {
+    display: inline-block;
+    max-width: 100%;
+    overflow-wrap: anywhere;  /* quebra o e-mail quando precisar */
+  }
+
+    #profile {
+    flex-direction: column;   
+    align-items: center;      
+    gap: 1.25rem;             
+  }
+
+  /*centralizar tipografia/ações no mobile */
+  .section__text,
+  .section__text__p1,
+  .title,
+  .section__text__p2,
+  #socials-container {
+    text-align: center;
+    justify-content: center;
+  }
+}
+
+/* Até 1439px: Corrije erro para resolucao LAPTOP */
+@media (max-width: 1439px) {
+  #About {
+    flex-direction: column;    
+    align-items: stretch;
+    gap: 2rem;
+  }
+
+  .section-divider {
+    width: 100%;                
+    height: 2px;
+    margin: 0;
+  }
+
+  .education {
+    max-width: 100%;         
+    align-self: stretch;
+  }
+
+  #profile { min-height: auto; }
+  .section__text { max-width: 100%; }
 }
