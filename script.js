@@ -196,7 +196,7 @@
 						"GRU",
 					],
 					desc: "In my senior thesis with DNIT, I built an AI solution to forecast the degradation of bridges and overpasses. I tested MLP, TabNet, and GRU-based RNNs, with GRUs achieving the best results.",
-					actions: ["View code"], // 1 botão
+					actions: ["View code", "View thesis"], // 1 botão
 				},
 				{
 					title: "Computer Vision for Sign Languages",
@@ -214,7 +214,7 @@
 					title: "Trem Expresso: Coffee E-commerce",
 					tags: ["Web", "React", "Bootstrap 5", "Node.js", "Express", "SQLite"],
 					desc: "Course project for Web Development: a simple, functional coffee store with product browsing, details, and a cart simulating a basic e-commerce flow.",
-					actions: ["View code"],
+					actions: ["View code", "View demo"],
 				},
 				{
 					title: "An AI that Plays Mortal Kombat II – Genesis",
@@ -248,7 +248,7 @@
 						"GRU",
 					],
 					desc: "Em meu TCC com o DNIT, desenvolvi uma solução de IA para prever a degradação de pontes e viadutos. Testei MLP, TabNet e RNNs com GRU, sendo GRU a que obteve melhor desempenho.",
-					actions: ["Ver código"],
+					actions: ["Ver código", "Ver tese"],
 				},
 				{
 					title: "Visão Computacional aplicada a Linguagens de Sinais",
@@ -267,7 +267,7 @@
 					title: "Trem Expresso: Plataforma de E-commerce para Café",
 					tags: ["Web", "React", "Bootstrap 5", "Node.js", "Express", "SQLite"],
 					desc: "Projeto da disciplina de Desenvolvimento Web: loja de café com navegação de produtos, detalhes e carrinho simulando o fluxo básico de e-commerce.",
-					actions: ["Ver código"],
+					actions: ["Ver código", "Ver demo"],
 				},
 				{
 					title: "Uma IA que joga Mortal Kombat II – Genesis",
