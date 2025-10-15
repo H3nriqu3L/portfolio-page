@@ -475,6 +475,7 @@ body {
 /* ===== Projects ===== */
 #projects {
 	position: relative;
+	padding: 2%;
 }
 
 .projects-wrapper {
@@ -675,7 +676,8 @@ body {
 
 /* Layout geral da seção */
 .section {
-  padding: 2rem 1rem;
+  padding: 3%;
+
 }
 
 .section-title {
