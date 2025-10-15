@@ -498,6 +498,18 @@ body {
 	padding: 0.5rem 2.75rem 1.25rem; /* espaço visual p/ não ficar sob as setas */
 }
 
+.projects-carousel.dragging {
+  scroll-snap-type: none;
+  cursor: grabbing;
+}
+
+   .project-card { scroll-snap-align: center; }
+  .projects-carousel { 
+    scroll-snap-stop: always;    
+    overscroll-behavior-inline: contain; 
+    touch-action: pan-y;        
+  }
+
 /* largura responsiva por breakpoint */
 @media (min-width: 640px) {
 	.projects-carousel {
@@ -768,6 +780,7 @@ body {
     scroll-padding-inline: 1.5rem;
   }
 
+
   /*  Textos longos n estouram */
   #socials-container .email-text a {
     display: inline-block;
@@ -808,7 +821,7 @@ body {
   .scroll-btn.right { right: 8px; }
 
   /* opcional: evita paradas “meio card” */
-  .projects-carousel { scroll-snap-stop: always; }
+  /* .projects-carousel { scroll-snap-stop: always; } */
 
   .lang-controls {
     display: inline-flex;     /* garante comportamento consistente */

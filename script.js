@@ -551,114 +551,99 @@
 })();
 
 (function () {
-	const wrapper = document.querySelector(".projects-wrapper");
-	const carousel = wrapper?.querySelector(".projects-carousel");
-	const btnLeft = wrapper?.querySelector(".scroll-btn.left");
-	const btnRight = wrapper?.querySelector(".scroll-btn.right");
+  const wrapper = document.querySelector(".projects-wrapper");
+  const carousel = wrapper?.querySelector(".projects-carousel");
+  const btnLeft = wrapper?.querySelector(".scroll-btn.left");
+  const btnRight = wrapper?.querySelector(".scroll-btn.right");
 
-	if (!wrapper || !carousel || !btnLeft || !btnRight) return;
+  if (!wrapper || !carousel || !btnLeft || !btnRight) return;
 
-	// Acessibilidade e comportamento básico
-	carousel.setAttribute("role", "region");
-	carousel.setAttribute("aria-label", "Carrossel de projetos");
-	carousel.style.scrollBehavior = "smooth";
+  // Acessibilidade e comportamento básico
+  carousel.setAttribute("role", "region");
+  carousel.setAttribute("aria-label", "Carrossel de projetos");
+  carousel.style.scrollBehavior = "smooth";
 
-	// “Página” de rolagem por clique de seta
-	const page = () => Math.max(wrapper.clientWidth * 0.9, 300);
+  // “Página” de rolagem por clique de seta
+  const page = () => Math.max(wrapper.clientWidth * 0.9, 300);
 
-	const atStart = () => Math.floor(carousel.scrollLeft) <= 0;
-	const atEnd = () =>
-		Math.ceil(carousel.scrollLeft + carousel.clientWidth) >=
-		Math.ceil(carousel.scrollWidth - 1);
+  // Tolerância para bordas (px)
+  const EPS = 2;
+  const atStart = () => carousel.scrollLeft <= EPS;
+  const atEnd = () =>
+    (carousel.scrollWidth - carousel.clientWidth - carousel.scrollLeft) <= EPS;
 
-	const updateButtons = () => {
-		btnLeft.disabled = atStart();
-		btnRight.disabled = atEnd();
-		btnLeft.setAttribute("aria-disabled", String(btnLeft.disabled));
-		btnRight.setAttribute("aria-disabled", String(btnRight.disabled));
-	};
+  const updateButtons = () => {
+    btnLeft.disabled = atStart();
+    btnRight.disabled = atEnd();
+    btnLeft.setAttribute("aria-disabled", String(btnLeft.disabled));
+    btnRight.setAttribute("aria-disabled", String(btnRight.disabled));
+  };
 
-	const scrollByAmount = (amount) => {
-		carousel.scrollBy({ left: amount, behavior: "smooth" });
-	};
+  const scrollByAmount = (amount) => {
+    carousel.scrollBy({ left: amount, behavior: "smooth" });
+    // feedback imediato (o listener de scroll vai refinar)
+    requestAnimationFrame(updateButtons);
+  };
 
-	// Botões
-	btnLeft.addEventListener("click", () => scrollByAmount(-page()));
-	btnRight.addEventListener("click", () => scrollByAmount(page()));
+  // Botões
+  btnLeft.addEventListener("click", () => scrollByAmount(-page()));
+  btnRight.addEventListener("click", () => scrollByAmount(page()));
 
-	// Atualiza estado enquanto rola
-	const onScroll = () => updateButtons();
-	//carousel.addEventListener("scroll", onScroll, { passive: true });
+  // Atualiza estado enquanto rola (inclui arrasto, teclado e wheel)
+  const onScroll = () => requestAnimationFrame(updateButtons);
+  carousel.addEventListener("scroll", onScroll, { passive: true });
 
-	// Teclado dentro do carrossel
-	carousel.addEventListener("keydown", (e) => {
-		if (e.key === "ArrowLeft") {
-			e.preventDefault();
-			scrollByAmount(-page());
-		} else if (e.key === "ArrowRight") {
-			e.preventDefault();
-			scrollByAmount(page());
-		}
-	});
+  // Teclado dentro do carrossel
+  carousel.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowLeft") {
+      e.preventDefault();
+      scrollByAmount(-page());
+    } else if (e.key === "ArrowRight") {
+      e.preventDefault();
+      scrollByAmount(page());
+    }
+  });
 
-	// Roda do mouse transformada em rolagem horizontal
-	// carousel.addEventListener(
-	// 	"wheel",
-	// 	(e) => {
-	// 		if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-	// 			carousel.scrollLeft += e.deltaY;
-	// 			e.preventDefault();
-	// 		}
-	// 	},
-	// 	{ passive: false }
-	// );
+  // Arrastar (mouse/touch)
+  let dragging = false;
+  let startX = 0;
+  let startScroll = 0;
 
-	// Arrastar (mouse/touch)
-	let dragging = false;
-	let startX = 0;
-	let startScroll = 0;
+  const startDrag = (x) => {
+    dragging = true;
+    startX = x;
+    startScroll = carousel.scrollLeft;
+    carousel.classList.add("dragging");
+  };
+  const moveDrag = (x) => {
+    if (!dragging) return;
+    const dx = x - startX;
+    carousel.scrollLeft = startScroll - dx;
+    // durante o drag o listener de scroll já chama updateButtons
+  };
+  const endDrag = () => {
+    dragging = false;
+    carousel.classList.remove("dragging");
+    updateButtons(); // garante estado correto ao soltar
+  };
 
-	const startDrag = (x) => {
-		dragging = true;
-		startX = x;
-		startScroll = carousel.scrollLeft;
-		carousel.classList.add("dragging");
-	};
-	const moveDrag = (x) => {
-		if (!dragging) return;
-		const dx = x - startX;
-		carousel.scrollLeft = startScroll - dx;
-	};
-	const endDrag = () => {
-		dragging = false;
-		carousel.classList.remove("dragging");
-	};
+  carousel.addEventListener("mousedown", (e) => startDrag(e.clientX));
+  window.addEventListener("mousemove", (e) => moveDrag(e.clientX));
+  window.addEventListener("mouseup", endDrag);
 
-	carousel.addEventListener("mousedown", (e) => startDrag(e.clientX));
-	window.addEventListener("mousemove", (e) => moveDrag(e.clientX));
-	window.addEventListener("mouseup", endDrag);
+  carousel.addEventListener("touchstart", (e) => startDrag(e.touches[0].clientX), { passive: true });
+  carousel.addEventListener("touchmove",  (e) => moveDrag(e.touches[0].clientX), { passive: true });
+  carousel.addEventListener("touchend", endDrag);
+  carousel.addEventListener("touchcancel", endDrag);
 
-	carousel.addEventListener(
-		"touchstart",
-		(e) => startDrag(e.touches[0].clientX),
-		{ passive: true }
-	);
-	carousel.addEventListener(
-		"touchmove",
-		(e) => moveDrag(e.touches[0].clientX),
-		{ passive: true }
-	);
-	carousel.addEventListener("touchend", endDrag);
-	carousel.addEventListener("touchcancel", endDrag);
+  // Evita clique em links enquanto arrasta
+  carousel.querySelectorAll("a").forEach((a) => {
+    a.addEventListener("click", (e) => {
+      if (carousel.classList.contains("dragging")) e.preventDefault();
+    });
+  });
 
-	// Evita clique em links enquanto arrasta
-	carousel.querySelectorAll("a").forEach((a) => {
-		a.addEventListener("click", (e) => {
-			if (carousel.classList.contains("dragging")) e.preventDefault();
-		});
-	});
-
-	// Estado inicial + resize
-	updateButtons();
-	window.addEventListener("resize", updateButtons);
+  // Estado inicial + resize
+  updateButtons();
+  window.addEventListener("resize", updateButtons);
 })();
